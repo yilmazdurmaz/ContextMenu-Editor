@@ -1,9 +1,9 @@
 @echo off
 echo.[1] custom mode [2] normal mode
 choice /c 12
-echo.Please DONT put nothing as an argument, it'll mean to delete the entire thing.
+echo.Context entries added "ContextMenu-Editor" are named "Menu_*" or "Entry_*"
 echo.
-echo.For "normal" mode, strip "01" from name: "01MenuCommand" is to be "MenuCommand"
+echo.Use the full name shown like "Menu_myProgram" or "Entry_Start"
 IF %ERRORLEVEL% == 1 goto custom:
 IF %ERRORLEVEL% == 2 goto normal
 echo. ERROR: Invalid choice
@@ -20,9 +20,7 @@ set value=
 set /p value=
 IF "%value%" == "" GOTO empty
 IF NOT "%value%" == "" reg delete "HKEY_CLASSES_ROOT\Directory\ContextMenus\%value%"
-IF NOT "%value%" == "" reg delete "HKEY_CLASSES_ROOT\Directory\Background\shell\01%value%"
 IF NOT "%value%" == "" reg delete "HKEY_CLASSES_ROOT\Directory\Background\shell\%value%"
-IF NOT "%value%" == "" reg delete "HKEY_CLASSES_ROOT\Directory\shell\01%value%"
 IF NOT "%value%" == "" reg delete "HKEY_CLASSES_ROOT\Directory\shell\%value%"
 echo.
 echo.all done!
