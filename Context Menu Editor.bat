@@ -12,7 +12,7 @@ echo.WARNING: USE "\\" IN PATH ; EXAMPLE: C:\Windows.exe BECOME C:\\Windows.exe
 set /p exec=
 echo.What do you want it to be?
 echo.[1] a Menu ("Open %exec%" plus "Open %exec% Elevated")
-echo.[2] one entry (Open %exec%)
+echo.[2] one entry ("Open %exec%", works by "shift+right click")
 choice /c 12
 IF %ERRORLEVEL% == 1 goto two
 IF %ERRORLEVEL% == 2 goto one
