@@ -1,14 +1,18 @@
 ::Made By TheJoshua974
 @echo off
 echo.Hello %username%
-echo.Please avoid using spaces, you could break your registry value, try to only do spaces when it's for paths or file names
+echo.Please avoid using spaces, you could break your registry value, try to use spaces only when it's for paths or file names
 echo.What do you want the Menu to be called?
 set /p MUIVerb=
-echo.Where is the icon file? (USE TWO \ EXEMPLE: C:\Windows.ico BECOME C:\\Windows.ico)
+echo.Where is the icon file?
+echo.WARNING: USE "\\" IN PATH ; EXAMPLE: C:\Windows.ico BECOME C:\\Windows.ico
 set /p Icon=
-echo.Where is the executable? (USE TWO \ EXEMPLE: C:\Windows BECOME C:\\Windows.exe)
+echo.Where is the executable?
+echo.WARNING: USE "\\" IN PATH ; EXAMPLE: C:\Windows.exe BECOME C:\\Windows.exe
 set /p exec=
-echo.What do you want it to be? [1] a Menu (Open %exec% plus Open %exec% Elevated) [2] one entry (Open %exec%)
+echo.What do you want it to be?
+echo.[1] a Menu ("Open %exec%" plus "Open %exec% Elevated")
+echo.[2] one entry (Open %exec%)
 choice /c 12
 IF %ERRORLEVEL% == 1 goto two
 IF %ERRORLEVEL% == 2 goto one
@@ -75,8 +79,12 @@ goto done
 echo Done!
 echo Open the file "menu.reg" to apply changes!
 echo if you wanna remove the context menu either use the given file or do it manually
-echo to do it manually go to [HKEY_CLASSES_ROOT\Directory\shell] and remove 01Menu%MUIVerb%
-echo then go to [HKEY_CLASSES_ROOT\Directory\ContextMenus] and remove Menu%MUIVerb%
-echo finally go to [HKEY_CLASSES_ROOT\Directory\backround\shell] and remove Menu%MUIVerb%
-echo and the menu will be removed!
+echo to do it manually, open "regedit.exe" and
+echo   first go to [HKEY_CLASSES_ROOT\Directory\shell] and remove 01Menu%MUIVerb%
+echo   then go to [HKEY_CLASSES_ROOT\Directory\ContextMenus] and remove Menu%MUIVerb%
+echo   finally go to [HKEY_CLASSES_ROOT\Directory\backround\shell] and remove Menu%MUIVerb%
+echo   and the menu will be removed!
+echo.
+echo.If you used "one entry", you need to use "manual deletion" with removal script
+
 pause
